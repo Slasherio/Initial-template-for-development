@@ -6,13 +6,14 @@ var gulp = require('gulp'),
     cssnano = require('gulp-cssnano'), // for minification
     del = require('del'), // for deleting folder dist before bulding
     imagemin = require('gulp-imagemin'), //for optimization images
+    notify = require('gulp-notify'), //notying about error
     autoprefixer = require('gulp-autoprefixer'), //for adding prefixer
     jshint = require('gulp-jshint'); // for javascript files
 
 //Task for from sass to css
 gulp.task('sass', function() {
     return gulp.src('src/scss/*.scss') //take a source
-        .pipe(sass()) // transform scss to css
+        .pipe(sass().on("error", notify.onError())) // transform scss to css
         .pipe(autoprefixer()) //add prefixer
         .pipe(gulp.dest('src/css')) //uload result
         .pipe(browserSync.reload({ stream: true })) // for reload page, when css will be change

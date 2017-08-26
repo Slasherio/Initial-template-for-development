@@ -20,5 +20,8 @@
         "gulp-uglifyjs": "^0.6.2",
         "imagemin-pngquant": "^5.0.1",
         "jshint": "^2.9.4"
+    },
+    "dependencies": {
+        "gulp-notify": "^3.0.0"
     }
 }
